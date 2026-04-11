@@ -31,7 +31,7 @@ header() { echo ""; echo "$1"; echo "$(printf '─%.0s' {1..50})"; }
 
 # ── Start ──────────────────────────────────────────────────────────────────────
 echo ""
-echo "AWS with Claude — Pre-flight Checklist"
+echo "AI-ML on AWS — Pre-flight Checklist"
 echo "======================================="
 
 # ── 1. AWS CLI ─────────────────────────────────────────────────────────────────
