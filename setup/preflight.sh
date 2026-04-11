@@ -155,7 +155,7 @@ fi
 echo ""
 echo "======================================="
 if [[ $ERRORS -eq 0 ]]; then
-  echo "  $PASS  All checks passed. You're ready for Part 1."
+  echo "  $PASS  All checks passed."
 else
   echo "  $FAIL  $ERRORS check(s) failed. Fix the items above and re-run."
 fi
