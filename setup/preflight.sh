@@ -85,6 +85,8 @@ else
     ok "Region: $REGION"
   else
     fail "AWS credentials invalid for profile '$PROFILE' — check your keys in ~/.aws/credentials"
+    echo "       Run 'aws configure list-profiles' to see available profiles"
+    echo "       Docs: https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html"
   fi
 fi
 
@@ -107,9 +109,12 @@ if [[ -n "$PROFILE" ]] && [[ -n "${ACCOUNT:-}" ]]; then
       ok "Public subnets available ($SUBNET_COUNT subnets)"
     else
       fail "No public subnets found in default VPC — check your VPC configuration"
+      echo "       Docs: https://docs.aws.amazon.com/vpc/latest/userguide/default-vpc.html"
     fi
   else
-    fail "No default VPC found in $REGION — create one or pass an existing VPC ID to CDK"
+    fail "No default VPC found in $REGION — restore it with:"
+    echo "       aws ec2 create-default-vpc --region $REGION"
+    echo "       Docs: https://docs.aws.amazon.com/vpc/latest/userguide/default-vpc.html"
   fi
 else
   warn "Skipping VPC check — profile or account not resolved"
@@ -128,6 +133,7 @@ if [[ -n "$PROFILE" ]] && [[ -n "${ACCOUNT:-}" ]]; then
     fail "No EC2 key pairs found in $REGION — create one:"
     echo "       aws ec2 create-key-pair --key-name my-key --query KeyMaterial --output text > ~/.ssh/my-key.pem"
     echo "       chmod 400 ~/.ssh/my-key.pem"
+    echo "       Docs: https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html"
   fi
 else
   warn "Skipping key pair check — profile or account not resolved"
@@ -146,6 +152,7 @@ if [[ -n "$PROFILE" ]] && [[ -n "${ACCOUNT:-}" ]]; then
   else
     fail "CDK not bootstrapped — run:"
     echo "       cdk bootstrap aws://$ACCOUNT/$REGION --profile $PROFILE"
+    echo "       Docs: https://docs.aws.amazon.com/cdk/v2/guide/bootstrapping.html"
   fi
 else
   warn "Skipping CDK bootstrap check — profile or account not resolved"
