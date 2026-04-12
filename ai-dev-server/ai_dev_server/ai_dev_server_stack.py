@@ -85,6 +85,7 @@ class AiDevServerStack(Stack):
             "set -eux",
             "# ── System update ──────────────────────────────────────────────",
             "dnf update -y",
+            "dnf install -y git",
 
             "# ── Node.js 20 ─────────────────────────────────────────────────",
             "curl -fsSL https://rpm.nodesource.com/setup_20.x | bash -",
@@ -98,6 +99,10 @@ class AiDevServerStack(Stack):
             "pip3.11 install boto3",
             "# Make python3.11 the default python3",
             "alternatives --install /usr/bin/python3 python3 /usr/bin/python3.11 1",
+
+            "# ── Clone aiml-on-aws repo (scripts, tests) ────────────────────",
+            "git clone https://github.com/jdluther2025/aiml-on-aws.git /home/ec2-user/aiml-on-aws",
+            "chown -R ec2-user:ec2-user /home/ec2-user/aiml-on-aws",
 
             "# ── Signal completion ───────────────────────────────────────────",
             'echo "AI Dev Server setup complete" >> /var/log/ai-dev-server-setup.log',
