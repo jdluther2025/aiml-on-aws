@@ -87,6 +87,9 @@ class AiDevServerStack(Stack):
             "dnf update -y",
             "dnf install -y git",
 
+            "# ── AWS CLI ────────────────────────────────────────────────────",
+            "dnf install -y awscli",
+
             "# ── Node.js 20 ─────────────────────────────────────────────────",
             "curl -fsSL https://rpm.nodesource.com/setup_20.x | bash -",
             "dnf install -y nodejs",
