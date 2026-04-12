@@ -96,6 +96,8 @@ class AiDevServerStack(Stack):
             "# ── Python + boto3 (for Bedrock in future blogs) ───────────────",
             "dnf install -y python3.11 python3.11-pip",
             "pip3.11 install boto3",
+            "# Make python3.11 the default python3",
+            "alternatives --install /usr/bin/python3 python3 /usr/bin/python3.11 1",
 
             "# ── Signal completion ───────────────────────────────────────────",
             'echo "AI Dev Server setup complete" >> /var/log/ai-dev-server-setup.log',
