@@ -53,7 +53,7 @@ class AiDevServerStack(Stack):
 
         sg = ec2.SecurityGroup(self, "AiDevServerSG",
             vpc=vpc,
-            description="AI Dev Server — SSH access only",
+            description="AI Dev Server - SSH access only",
             allow_all_outbound=True,
         )
 
@@ -67,7 +67,7 @@ class AiDevServerStack(Stack):
 
         role = iam.Role(self, "AiDevServerRole",
             assumed_by=iam.ServicePrincipal("ec2.amazonaws.com"),
-            description="AI Dev Server — Bedrock access via IAM role (no API keys on server)",
+            description="AI Dev Server - Bedrock access via IAM role (no API keys on server)",
             managed_policies=[
                 iam.ManagedPolicy.from_aws_managed_policy_name("AmazonBedrockFullAccess"),
             ],
