@@ -100,8 +100,6 @@ class AiDevServerStack(Stack):
             "# ── Python + boto3 (for Bedrock in future blogs) ───────────────",
             "dnf install -y python3.11 python3.11-pip",
             "pip3.11 install boto3",
-            "# Make python3.11 the default python3",
-            "alternatives --install /usr/bin/python3 python3 /usr/bin/python3.11 1",
 
             "# ── Clone aiml-on-aws repo (scripts, tests) ────────────────────",
             "git clone https://github.com/jdluther2025/aiml-on-aws.git /home/ec2-user/aiml-on-aws",
